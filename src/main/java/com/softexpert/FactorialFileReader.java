@@ -10,7 +10,7 @@ import java.util.List;
 
 public class FactorialFileReader {
 	private List<String> results = new ArrayList<String>();
-	
+
 	public List<String> readFile(String filename) throws IOException {
 		InputStream inputStream = new FileInputStream(filename);
 		InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
@@ -26,10 +26,12 @@ public class FactorialFileReader {
 
 		while (true) {
 			value = bufferedReader.readLine();
-			if (value != null) {
+			if (value != null)
 				results.add(value);
-			} else
+			else
 				break;
 		}
+
 	}
+
 }
