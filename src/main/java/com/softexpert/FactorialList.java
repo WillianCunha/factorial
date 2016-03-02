@@ -12,7 +12,7 @@ public class FactorialList {
 		return results;
 	}
 
-	private void processFactorial(List<String> results, Integer factorial) {
+	public void processFactorial(List<String> results, Integer factorial) {
 		if (factorial == null)
 			results.add("Não é possivel calcular um fatorial de nulo");
 		else if (factorial < 0)
