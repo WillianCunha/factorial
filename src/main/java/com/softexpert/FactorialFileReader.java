@@ -9,29 +9,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FactorialFileReader {
-	private List<String> results = new ArrayList<String>();
 
-	public List<String> readFile(String filename) throws IOException {
+	public List<String> readFile(String filename) throws IOException{
 		InputStream inputStream = new FileInputStream(filename);
 		InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
 		BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-		readValues(bufferedReader);
-		bufferedReader.close();
-
-		return results;
+		return readValues(bufferedReader);
 	}
 
-	private void readValues(BufferedReader bufferedReader) throws IOException {
+	private List<String> readValues(BufferedReader bufferedReader) throws IOException {
+		 List<String> results = new ArrayList<String>();
 		String value = "";
-
-		while (true) {
-			value = bufferedReader.readLine();
-			if (value != null)
+		while ((value = bufferedReader.readLine()) != null ) 
 				results.add(value);
-			else
-				break;
-		}
-
+		return results;
 	}
 
 }
