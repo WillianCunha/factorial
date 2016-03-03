@@ -5,21 +5,22 @@ import java.util.List;
 
 public class FactorialList {
 
+	private Factorial factorialCalculator = new Factorial();
+
 	public List<String> calculate(List<String> factorials) {
 		List<String> results = new ArrayList<String>();
-		Factorial factorialCalculator = new Factorial();
-		int integerFactorial;
-
 		for (String factorial : factorials)
-			if (factorial == null)
-				results.add("Não é possivel calcular um fatorial de nulo");
-			else if ((integerFactorial = Integer.parseInt(factorial)) < 0)
-				results.add("Não é possivel calcular um fatorial de negativo");
-			else
-				results.add(String.format("Fatorial de %d é %d", integerFactorial,
-						factorialCalculator.calculate(integerFactorial)));
-
+			results.add(buildFactorialMessage(factorial));
 		return results;
+	}
+
+	private String buildFactorialMessage(String factorial) {
+		if (factorial == null)
+			return "Não é possivel calcular um fatorial de nulo";
+		Integer factorialNumber = Integer.parseInt(factorial);
+		if (factorialNumber < 0)
+			return "Não é possivel calcular um fatorial de negativo";
+		return String.format("Fatorial de %d é %d", factorialNumber, factorialCalculator.calculate(factorialNumber));
 	}
 
 }
